@@ -22,13 +22,15 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "AppDelegate.h"
-#include "cocos2d.h"
-
 USING_NS_CC;
 
-int main(int argc, char *argv[])
-{
-    AppDelegate app;
-    return Application::getInstance()->run();
+#import <Cocoa/Cocoa.h>
+
+int main(int argc, const char * argv[]) {
+    return NSApplicationMain(argc, argv);
 }
+
+//int main(int argc, char *argv[])
+//{
+//    return Application::getInstance()->run();
+//}

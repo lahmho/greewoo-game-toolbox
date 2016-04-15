@@ -6,8 +6,6 @@
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFile</key>
-	<string>Icon</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.senspark.greewoo.game_toolbox</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -29,7 +27,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2013. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>AppWindows</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

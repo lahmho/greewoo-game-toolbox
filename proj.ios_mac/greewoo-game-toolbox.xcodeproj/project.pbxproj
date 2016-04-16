@@ -27,8 +27,10 @@
 		5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087E78A17EB975400C73F5D /* OpenGL.framework */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		583F527B1CBE4CCF00B49AD3 /* AppWindows.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583F52791CBE4CC800B49AD3 /* AppWindows.xib */; };
-		583F527E1CBE4E7900B49AD3 /* LauncherViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 583F527D1CBE4E7900B49AD3 /* LauncherViewController.mm */; };
+		583F527E1CBE4E7900B49AD3 /* LauncherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583F527D1CBE4E7900B49AD3 /* LauncherViewController.m */; };
 		583F52A11CC0DF1600B49AD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583F52A01CC0DF1600B49AD3 /* Images.xcassets */; };
+		583F52C01CC146A400B49AD3 /* AlignSpinePolygonHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 583F52BE1CC146A400B49AD3 /* AlignSpinePolygonHelper.mm */; };
+		583F52C51CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 583F52C31CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.mm */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 /* End PBXBuildFile section */
@@ -73,8 +75,8 @@
 		46880B8719C43A87006E1F66 /* AlignSpinePolygonScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlignSpinePolygonScene.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		503AE10317EB98FF00D1A890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mac/main.m; sourceTree = "<group>"; };
-		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = mac/Prefix.pch; sourceTree = "<group>"; };
+		503AE10317EB98FF00D1A890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../proj.ios_mac/mac/main.m; sourceTree = "<group>"; };
+		503AE10417EB98FF00D1A890 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = ../proj.ios_mac/mac/Prefix.pch; sourceTree = "<group>"; };
 		503AE11117EB99EE00D1A890 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		503AE11A17EB9C5A00D1A890 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5087E76F17EB910900C73F5D /* greewoo-game-toolbox-desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "greewoo-game-toolbox-desktop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,10 +84,14 @@
 		5087E78A17EB975400C73F5D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		583F52791CBE4CC800B49AD3 /* AppWindows.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppWindows.xib; path = mac/AppWindows.xib; sourceTree = "<group>"; };
-		583F527C1CBE4E7900B49AD3 /* LauncherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LauncherViewController.h; path = mac/LauncherViewController.h; sourceTree = "<group>"; };
-		583F527D1CBE4E7900B49AD3 /* LauncherViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LauncherViewController.mm; path = mac/LauncherViewController.mm; sourceTree = "<group>"; };
+		583F52791CBE4CC800B49AD3 /* AppWindows.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AppWindows.xib; path = ../proj.ios_mac/mac/AppWindows.xib; sourceTree = "<group>"; };
+		583F527C1CBE4E7900B49AD3 /* LauncherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LauncherViewController.h; path = ../proj.ios_mac/mac/LauncherViewController.h; sourceTree = "<group>"; };
+		583F527D1CBE4E7900B49AD3 /* LauncherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LauncherViewController.m; path = ../proj.ios_mac/mac/LauncherViewController.m; sourceTree = "<group>"; };
 		583F52A01CC0DF1600B49AD3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "greewoo-game-toolbox-desktop/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		583F52BE1CC146A400B49AD3 /* AlignSpinePolygonHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AlignSpinePolygonHelper.mm; sourceTree = "<group>"; };
+		583F52BF1CC146A400B49AD3 /* AlignSpinePolygonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlignSpinePolygonHelper.h; sourceTree = "<group>"; };
+		583F52C21CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlignSpinePolygonTabViewController.h; path = mac/AlignSpinePolygonTabViewController.h; sourceTree = SOURCE_ROOT; };
+		583F52C31CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlignSpinePolygonTabViewController.mm; path = mac/AlignSpinePolygonTabViewController.mm; sourceTree = SOURCE_ROOT; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -141,11 +147,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				46880B8319C43A87006E1F66 /* C++ */,
+				46880B8319C43A87006E1F66 /* Sources */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				503AE10617EB990700D1A890 /* mac */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CustomTemplate;
@@ -180,6 +185,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				503AE0F517EB97AB00D1A890 /* Icons */,
 				583F52A01CC0DF1600B49AD3 /* Images.xcassets */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
@@ -191,15 +197,24 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
-		46880B8319C43A87006E1F66 /* C++ */ = {
+		46880B8319C43A87006E1F66 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* AlignSpinePolygonScene.cpp */,
 				46880B8719C43A87006E1F66 /* AlignSpinePolygonScene.h */,
+				583F52BE1CC146A400B49AD3 /* AlignSpinePolygonHelper.mm */,
+				583F52BF1CC146A400B49AD3 /* AlignSpinePolygonHelper.h */,
+				503AE10317EB98FF00D1A890 /* main.m */,
+				503AE10417EB98FF00D1A890 /* Prefix.pch */,
+				583F52791CBE4CC800B49AD3 /* AppWindows.xib */,
+				583F527C1CBE4E7900B49AD3 /* LauncherViewController.h */,
+				583F527D1CBE4E7900B49AD3 /* LauncherViewController.m */,
+				583F52C21CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.h */,
+				583F52C31CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.mm */,
 			);
-			name = "C++";
+			name = Sources;
 			path = ../Classes;
 			sourceTree = "<group>";
 		};
@@ -212,19 +227,6 @@
 			name = Icons;
 			path = mac;
 			sourceTree = SOURCE_ROOT;
-		};
-		503AE10617EB990700D1A890 /* mac */ = {
-			isa = PBXGroup;
-			children = (
-				503AE0F517EB97AB00D1A890 /* Icons */,
-				503AE10317EB98FF00D1A890 /* main.m */,
-				503AE10417EB98FF00D1A890 /* Prefix.pch */,
-				583F52791CBE4CC800B49AD3 /* AppWindows.xib */,
-				583F527C1CBE4E7900B49AD3 /* LauncherViewController.h */,
-				583F527D1CBE4E7900B49AD3 /* LauncherViewController.mm */,
-			);
-			name = mac;
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -321,9 +323,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				583F52C01CC146A400B49AD3 /* AlignSpinePolygonHelper.mm in Sources */,
 				503AE10517EB98FF00D1A890 /* main.m in Sources */,
-				583F527E1CBE4E7900B49AD3 /* LauncherViewController.mm in Sources */,
+				583F527E1CBE4E7900B49AD3 /* LauncherViewController.m in Sources */,
 				46880B8B19C43A87006E1F66 /* AlignSpinePolygonScene.cpp in Sources */,
+				583F52C51CC1E2F200B49AD3 /* AlignSpinePolygonTabViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

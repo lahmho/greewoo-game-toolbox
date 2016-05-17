@@ -1,7 +1,5 @@
 #include "AlignSpinePolygonScene.h"
 #include "AlignSpinePolygonHelper.h"
-#include "spine/spine-cocos2dx.h"
-
 
 USING_NS_CC;
 
@@ -64,11 +62,11 @@ bool AlignSpinePolygonLayer::init()
     
     //draw spine skeleton animation
     CCLOG("spine info:\n%s\n%s\n%s",AlignSpinePolygonHelper::getSpineJsonFilePath(), AlignSpinePolygonHelper::getSpineAtlasFilePath(), AlignSpinePolygonHelper::getAnimationName());
-    auto skeletonAnimation = spine::SkeletonAnimation::createWithFile(AlignSpinePolygonHelper::getSpineJsonFilePath(), AlignSpinePolygonHelper::getSpineAtlasFilePath(), 0.25);
-    skeletonAnimation->retain();
-    skeletonAnimation->setAnimation(0, AlignSpinePolygonHelper::getAnimationName(), true);
-    skeletonAnimation->setPosition(visibleSize/2);
-    this->addChild(skeletonAnimation, 10);
+    _skeletonAnimation = spine::SkeletonAnimation::createWithFile(AlignSpinePolygonHelper::getSpineJsonFilePath(), AlignSpinePolygonHelper::getSpineAtlasFilePath(), 0.25);
+    _skeletonAnimation->retain();
+    _skeletonAnimation->setAnimation(0, AlignSpinePolygonHelper::getAnimationName(), true);
+    _skeletonAnimation->setPosition(visibleSize/2);
+    this->addChild(_skeletonAnimation, 10);
     
     //read polygon vertices from json
     rapidjson::Document doc = readVerticesFromJSON(AlignSpinePolygonHelper::getPolygonJsonFilePath());
@@ -79,13 +77,32 @@ bool AlignSpinePolygonLayer::init()
     }
     
     //draw polygon
-    DrawNode* polygonDrawNode = DrawNode::create();
+    _polygonDrawNode = DrawNode::create();
     cocos2d::Point* points = &vertices[0];
-    polygonDrawNode->drawPolygon(points, vertices.size(), Color4F(1,0,0,0.5), 1, Color4F(0,0,1,1));
-    polygonDrawNode->setPosition(0,0);
-    polygonDrawNode->setScale(0.25);
+    _polygonDrawNode->drawPolygon(points, vertices.size(), Color4F(1,0,0,0.5), 1, Color4F(0,0,1,1));
+    _polygonDrawNode->setPosition(0,0);
+    _polygonDrawNode->setScale(0.5);
     //polygonDrawNode->setAnchorPoint(Vec2::ANCHOR_BOTTOM_RIGHT);
-    skeletonAnimation->addChild(polygonDrawNode);
+    _skeletonAnimation->addChild(_polygonDrawNode);
+    
+
+    //add mouse listener
+    auto _mouseListener = EventListenerMouse::create();
+    _mouseListener->onMouseMove = CC_CALLBACK_1(AlignSpinePolygonLayer::onMouseMove, this);
+    _mouseListener->onMouseUp = CC_CALLBACK_1(AlignSpinePolygonLayer::onMouseUp, this);
+    _mouseListener->onMouseDown = CC_CALLBACK_1(AlignSpinePolygonLayer::onMouseDown, this);
+    _mouseListener->onMouseScroll = CC_CALLBACK_1(AlignSpinePolygonLayer::onMouseScroll, this);
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(_mouseListener, this);
+    
+    //Initializing and binding
+    auto listener = EventListenerKeyboard::create();
+    listener->onKeyPressed = CC_CALLBACK_2(AlignSpinePolygonLayer::onKeyPressed, this);
+    listener->onKeyReleased = CC_CALLBACK_2(AlignSpinePolygonLayer::onKeyReleased, this);
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    _infoPoint = Point(0,0);
     
     return true;
 }
@@ -113,4 +130,72 @@ void AlignSpinePolygonLayer::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void AlignSpinePolygonLayer::onMouseDown(Event *event)
+{
+    EventMouse* e = (EventMouse*)event;
+    string str = "Mouse Down detected, Key: ";
+    str += to_string(e->getMouseButton());
+    CCLOG(str.c_str());
+}
+
+void AlignSpinePolygonLayer::onMouseUp(Event *event)
+{
+    EventMouse* e = (EventMouse*)event;
+    string str = "Mouse Up detected, Key: ";
+    str += to_string(e->getMouseButton());
+    CCLOG(str.c_str());
+}
+
+void AlignSpinePolygonLayer::onMouseMove(Event *event)
+{
+    EventMouse* e = (EventMouse*)event;
+    string str = "MousePosition X:";
+    str = str + to_string(e->getCursorX()) + " Y:" + to_string(e->getCursorY());
+    //CCLOG(str.c_str());
+}
+
+void AlignSpinePolygonLayer::onMouseScroll(Event *event)
+{
+    EventMouse* e = (EventMouse*)event;
+    string str = "Mouse Scroll detected, X: ";
+    str = str + to_string(e->getScrollX()) + " Y: " + to_string(e->getScrollY());
+    //CCLOG(str.c_str());
+}
+
+void AlignSpinePolygonLayer::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+    log("Key with keycode %d pressed", keyCode);
+    switch (keyCode) {
+        case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
+            _polygonDrawNode->setPositionY(_polygonDrawNode->getPositionY()+1);
+            _infoPoint += Point(0,1);
+            break;
+            
+        case cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW:
+            _polygonDrawNode->setPositionY(_polygonDrawNode->getPositionY()-1);
+            _infoPoint += Point(0,-1);
+            break;
+            
+        case cocos2d::EventKeyboard::KeyCode::KEY_LEFT_ARROW:
+            _polygonDrawNode->setPositionX(_polygonDrawNode->getPositionX()-1);
+            _infoPoint += Point(-1,0);
+            break;
+            
+        case cocos2d::EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
+            _polygonDrawNode->setPositionX(_polygonDrawNode->getPositionX()+1);
+            _infoPoint += Point(1,0);
+            break;
+            
+        default:
+            break;
+    }
+    
+    _infoPointLabel->setString(StringUtils::format("(%.0f,%.0f)", _infoPoint.x, _infoPoint.y));
+}
+
+void AlignSpinePolygonLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+{
+    log("Key with keycode %d released", keyCode);
 }
